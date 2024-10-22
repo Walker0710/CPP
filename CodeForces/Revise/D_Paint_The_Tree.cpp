@@ -71,7 +71,7 @@ void solve()
     vector<int> shortest_path = shortestPath(adj, n, n - 1, a, b);
     vector<int> visi(n + 1);
 
-    int root = shortest_path[shortest_path.size()/2];
+    int root = shortest_path[(shortest_path.size()+1)/2 - 1];
     visi[root] = 1;
     int height = 0;
 
@@ -95,7 +95,7 @@ void solve()
         }
     }
 
-    cout << 2 * n - height << endl;
+    cout << 2*(n-1) - height + shortest_path.size()/2<< endl;
 }
 
 signed main()
