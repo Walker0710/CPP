@@ -129,51 +129,68 @@ Node* deleteFromBST(Node* root, int val) {
     }
 }
 
-void levelOrderTraversal(Node *root)
-{
-    queue<Node*> q;
-    q.push(root);
-    q.push(NULL);
-
-    while (!q.empty())
-    {
-
-        Node* temp = q.front();
-        q.pop();
-
-        if (temp == NULL)
-        {
-            cout << endl;
-
-            if (!q.empty())
-            {
-                q.push(NULL);
-            }
-        }
-
-        else
-        {
-            cout<<temp -> data <<" "<<endl;
-            if (temp->left)
-            {
-                q.push(temp->left);
-            }
-
-            if (temp->right)
-            {
-                q.push(temp->right);
-            }
-        }
+void inorder(Node* root) {
+    if(root == NULL) {
+        return ;
     }
+
+    inorder(root->left);
+    cout << root -> data << " "; 
+    inorder(root -> right);
 }
+
+// void levelOrderTraversal(Node *root)
+// {
+//     queue<Node*> q;
+//     q.push(root);
+//     q.push(NULL);
+
+//     while (!q.empty())
+//     {
+
+//         Node* temp = q.front();
+//         q.pop();
+
+//         if (temp == NULL)
+//         {
+//             cout << endl;
+
+//             if (!q.empty())
+//             {
+//                 q.push(NULL);
+//             }
+//         }
+
+//         else
+//         {
+//             cout<<temp -> data <<" "<<endl;
+//             if (temp->left)
+//             {
+//                 q.push(temp->left);
+//             }
+
+//             if (temp->right)
+//             {
+//                 q.push(temp->right);
+//             }
+//         }
+//     }
+// }
+
+
 
 int main() {
 
-    Node* root = NULL;
+    Node* root = new Node(10);
 
-    cout<<"enter data to creat"<<endl;
-    takeInput(root);
+    insertIntoBST(root, 20);
+    insertIntoBST(root, 30);
+    insertIntoBST(root, 40);
+    insertIntoBST(root, 50);
+    insertIntoBST(root, 60);
+
 
     cout<<"printing the bst"<<endl;
-    levelOrderTraversal(root);
+    // levelOrderTraversal(root);
+    inorder(root);
 }
