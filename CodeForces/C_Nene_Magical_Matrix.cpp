@@ -31,8 +31,6 @@ void solve()
             cout << endl;
         }
     }
-
-
 }
 
 signed main()
