@@ -19,7 +19,6 @@ bool hasTripletSum(vector<int> &arr, int target)
 
             while (e > s)
             {
-
                 if (arr[s] + arr[e] == yoo)
                 {
                     return true;
