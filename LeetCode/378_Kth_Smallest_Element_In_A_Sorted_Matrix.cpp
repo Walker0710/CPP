@@ -3,12 +3,14 @@
 using namespace std;
 
 // << ,
-int kthSmallest(int mat[MAX][MAX], int n, int k)
+
+int kthSmallest(vector<vector<int>> &mat, int k)
 {
+    int n = mat.size();
     priority_queue<pair<int, pair<int, int>>, vector<pair<int, pair<int, int>>>, greater<>> pq;
 
     for (int i = 0; i < n; i++)
-    pq.push({mat[i][0], {i, 0}});
+        pq.push({mat[i][0], {i, 0}});
 
     for (int i = 0; i < k - 1; i++)
     {
