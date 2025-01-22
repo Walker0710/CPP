@@ -19,9 +19,11 @@ int maxSubStr(string str)
 
         if(one == zero) {
             ans++;
-            zero = 0;
-            one = 0;
         }
+    }
+
+    if(one != zero) {
+        return -1;
     }
 
     return ans;
