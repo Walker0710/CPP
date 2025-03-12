@@ -3,6 +3,12 @@
 
 using namespace std;
 
+struct Compare {
+    bool operator()(const pair<int, int>& a, const pair<int, int>& b) {
+        return a.second < b.second;
+    }
+};
+
 int main() {
 
     //max heap
@@ -28,4 +34,8 @@ int main() {
     minHeap.top();
     minHeap.size();
     bool emp = minHeap.empty();
+
+    //max feq ele comes first
+    priority_queue<pair<int, int>, vector<pair<int, int>>, Compare> pq;
+
 }
