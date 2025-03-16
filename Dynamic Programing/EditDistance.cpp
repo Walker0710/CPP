@@ -28,7 +28,6 @@ int solve(string &word1, string &word2, int index1, int index2) {
 
         ans = min(insertAns, min(deleteAns, replaceAns));
     }
-
     return ans;
 }
 
