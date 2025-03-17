@@ -50,7 +50,7 @@ int maxExpressionValue(const string& expression) {
                 if (op == '+') {
                     current_max = left.max_val + right.max_val;
                     current_min = left.min_val + right.min_val;
-                } else { // '-'
+                } else {
                     current_max = left.max_val - right.min_val;
                     current_min = left.min_val - right.max_val;
                 }
