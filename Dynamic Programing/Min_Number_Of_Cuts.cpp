@@ -7,12 +7,12 @@ using namespace std;
 
 bool isMonochrome(vector<vector<int>> &matrix, int i, int j, int h, int w)
 {
-    int color = grid[i][j];
+    int color = matrix[i][j];
     for (int r = i; r < i + h; r++)
     {
         for (int c = j; c < j + w; c++)
         {
-            if (grid[r][c] != color)
+            if (matrix[r][c] != color)
             return false;
         }
     }
@@ -33,13 +33,13 @@ int minCuts(vector<vector<int>> &matrix ,int i, int j, int h, int w, vector<vect
     // Try all horizontal cuts
     for (int r = 1; r < h; r++)
     {
-        minCut = min(minCut, 1 + minCuts(i, j, r, w) + minCuts(i + r, j, h - r, w));
+        minCut = min(minCut, 1 + minCuts(matrix, i, j, r, w, dp) + minCuts(matrix, i + r, j, h - r, w, dp));
     }
 
     // Try all vertical cuts
     for (int c = 1; c < w; c++)
     {
-        minCut = min(minCut, 1 + minCuts(i, j, h, c) + minCuts(i, j + c, h, w - c));
+        minCut = min(minCut, 1 + minCuts(matrix, i, j, h, c, dp) + minCuts(matrix, i, j + c, h, w - c, dp));
     }
 
     return dp[i][j][h][w] = minCut;
@@ -49,6 +49,25 @@ int getMinimumCuts(vector<vector<int>> &matrix)
 {
     int m = matrix.size();
     int n = matrix[0].size();
-    vector<vector<vector<vector<int>>>> dp;
-    return minCuts(matrix ,0, 0, m, n, dp);
+    
+    // Initialize 4D dp array with -1
+    vector<vector<vector<vector<int>>>> dp(m + 1, 
+        vector<vector<vector<int>>>(n + 1, 
+            vector<vector<int>>(m + 1, 
+                vector<int>(n + 1, -1))));
+    
+    return minCuts(matrix, 0, 0, m, n, dp);
+}
+
+int main()
+{
+    vector<vector<int>> matrix = {
+        {0, 1, 0, 0, 1},
+        {0, 1, 0, 0, 1},
+        {1, 1, 0, 0, 1},
+        {1, 1, 1, 0, 0},
+        {0, 0, 1, 0, 0}
+    };
+    cout << getMinimumCuts(matrix) << endl;
+    return 0;
 }
