@@ -29,7 +29,6 @@ int lengthOfLongestSubstring(string s) {
     return len;
 }
 
-
 int lengthOfLongestSubstring(string s) {
     unordered_map<char, int> lastIndex;
     int maxLen = 0;
