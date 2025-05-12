@@ -11,11 +11,9 @@
 
 using namespace std;
 
-
 //one case missing
 vector<int> nextBiggerElement(vector<int> &arr, int n)
 {
-
     stack<int> s;
     s.push(-1);
     vector<int> ans(n);

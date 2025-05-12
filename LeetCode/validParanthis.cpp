@@ -1,51 +1,57 @@
-#include<iostream>
-#include<stack>
+#include <iostream>
+#include <stack>
 
 using namespace std;
 
-bool isValid(string s) {
+bool isValid(string s)
+{
 
     stack<char> std;
 
-    for(int i = 0; i<s.size(); i++) {
+    for (int i = 0; i < s.size(); i++)
+    {
 
-        char yo  = s[i];
+        char yo = s[i];
 
-        if(yo == '(' || yo == '{' || yo == '[') {
-
+        if (yo == '(' || yo == '{' || yo == '[')
+        {
             std.push(yo);
         }
 
-        else {
+        else
+        {
+            if (!std.empty())
+            {
+                char top = std.top();
 
-            if(!std.empty()) {
+                if (s[i] == ')' && top == '(' || s[i] == '}' && top == '{' || s[i] == ']' && top == '[')
+                {
 
-            char top = std.top();
+                    std.pop();
+                }
 
-            if(s[i] == ')' && top == '(' || s[i] == '}' && top == '{' || s[i] == ']' && top == '[') {
+                else
+                {
 
-                std.pop();
+                    return false;
+                }
             }
 
-            else {
-
-                return false;
-            }
-            }
-
-            else {
-
+            else
+            {
                 return false;
             }
         }
     }
 
-    if(std.empty()) {
+    if (std.empty())
+    {
 
         return true;
     }
 
-    else {
+    else
+    {
 
         return false;
     }
