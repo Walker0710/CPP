@@ -53,7 +53,6 @@ ListNode* removeNthFromEnd(ListNode* head, int n) {
     }
 
     else {
-
         ListNode* prev = head;
         ListNode* curr = head -> next;
         int count = size - n - 1;
