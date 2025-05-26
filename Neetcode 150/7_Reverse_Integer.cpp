@@ -28,6 +28,7 @@ int reverse(int x)
     return res;
 }
 
+
 // BIT_MASK
 int reverse(int x)
 {
@@ -46,6 +47,6 @@ int reverse(int x)
     {
         return 0;
     }
-    
+
     return static_cast<int>(res);
 }
