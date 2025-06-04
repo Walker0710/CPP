@@ -4,26 +4,8 @@ using namespace std;
 
 // << ,
 
-long long solve(int index, int groupIndex, int groupSum, int groupCost, vector<int> &nums, vector<int> &cost, int k)
-{
-    if (index == nums.size())
-    {
-        return (groupSum + k * groupIndex) * groupCost;
-    }
 
-    long long extend = solve(index + 1, groupIndex, groupSum + nums[index], groupCost + cost[index], nums, cost, k);
-
-    long long endGroupCost = (groupSum + k * groupIndex) * groupCost;
-    long long startNew = endGroupCost + solve(index + 1, groupIndex + 1, nums[index], cost[index], nums, cost, k);
-
-    return min(extend, startNew);
-}
-
-long long minimumCost(vector<int> &nums, vector<int> &cost, int k)
-{
-    return solve(1, 1, nums[0], cost[0], nums, cost, k);
-}
-
+// tle
 long long solve(int index, int groupIndex, int prefixSum, vector<int> &nums, vector<int> &cost, int k, unordered_map<string, long long> &dp)
 {
     if (index == nums.size())
@@ -58,6 +40,9 @@ long long minimumCost(vector<int> &nums, vector<int> &cost, int k)
     return solve(0, 1, 0, nums, cost, k, dp);
 }
 
+
+
+// accepted
 long long solve(int start, int end, int k, vector<long long> &prefixNums, vector<long long> &prefixCosts, vector<vector<long long>> &dp)
 {
     int n = prefixNums.size();

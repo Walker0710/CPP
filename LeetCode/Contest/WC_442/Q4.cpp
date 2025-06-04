@@ -4,20 +4,26 @@ using namespace std;
 
 // << ,
 
-long long minOperations(vector<vector<int>> &queries)
+#define ll long long
+ll minOperations(vector<vector<int>> &queries)
 {
-    long long ans = 0;
-
+    ll ans = 0;
     for (int i = 0; i < queries.size(); i++)
     {
-        int l = queries[i][0];
-        int r = queries[i][1];
+        ll start = queries[i][0], end = queries[i][1];
+        ll ops = 0;
 
-        for (int j = r; j >= l; j -= 2)
+        for (ll d = 1, prev = 1; d < 17; d++)
         {
-            ans += floor(log2(j) / 2) + 1;
-        }
-    }
+            ll cur = prev * 4LL;
+            // find intersection of interval given in queries with [prev, cur - 1]
+            ll l = max(start, prev), r = min(end, cur - 1);
 
+            if (r >= l)
+                ops += (r - l + 1) * d; // intersection occurs
+            prev = cur;
+        }
+        ans += (ops + 1) / 2; // since everytime we can choose 2 numbers we need atmost ceil(ops / 2) operations
+    }
     return ans;
 }
