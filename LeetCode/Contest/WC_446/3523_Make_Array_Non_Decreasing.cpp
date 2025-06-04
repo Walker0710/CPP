@@ -4,31 +4,6 @@ using namespace std;
 
 // << ,
 
-vector<int> nextSmallerElement(vector<int> &arr, int n)
-{
-
-    stack<int> s;
-    s.push(-1);
-    vector<int> ans(n);
-
-    for (int i = n - 1; i >= 0; i--)
-    {
-
-        int curr = arr[i];
-
-        while (s.top() >= curr)
-        {
-
-            s.pop();
-        }
-
-        ans[i] = s.top();
-        s.push(curr);
-    }
-
-    return ans;
-}
-
 vector<int> nextGreaterElementIndex(vector<int> &arr, int n)
 {
 
@@ -37,7 +12,6 @@ vector<int> nextGreaterElementIndex(vector<int> &arr, int n)
 
     for (int i = n - 1; i >= 0; i--)
     {
-
         while (!s.empty() && arr[s.top()] < arr[i])
         {
             s.pop();
@@ -47,6 +21,7 @@ vector<int> nextGreaterElementIndex(vector<int> &arr, int n)
         {
             ans[i] = -1;
         }
+        
         else
         {
             ans[i] = s.top(); 
