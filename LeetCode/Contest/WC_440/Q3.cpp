@@ -23,13 +23,7 @@ int numOfUnplacedFruits(vector<int> &fruits, vector<int> &baskets)
     {
         int que = fruits[i];
 
-        int ind = upper_bound(
-                      basketSort.begin(), basketSort.end(), que,
-                      [](int value, const pair<int, int> &p)
-                      {
-                          return value < p.first;
-                      }) -
-                  basketSort.begin();
+        int ind = upper_bound(basketSort.begin(), basketSort.end(), que, [](int value, const pair<int, int> &p) { return value < p.first;}) - basketSort.begin();
 
         int minIndex = -1;
         for (int j = ind; j < n; j++)
@@ -55,9 +49,6 @@ int numOfUnplacedFruits(vector<int> &fruits, vector<int> &baskets)
 
     return ans;
 }
-
-
-
 
 
 
