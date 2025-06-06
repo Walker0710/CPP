@@ -20,7 +20,8 @@
         "ranges": "cpp",
         "span": "cpp",
         "stacktrace": "cpp",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "variant": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
