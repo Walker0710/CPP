@@ -76,7 +76,6 @@ void solve(int col, vector<vector<int>> &ans, vector<vector<int>> &board, int n)
     }
 
     //solve 1 case and rest recursion will take care
-
     for(int row = 0; row < n; row++) {
 
         if(isSafe(row, col, board, n)) {
