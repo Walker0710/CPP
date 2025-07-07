@@ -17,10 +17,8 @@ public:
 
     void push(int val)
     {
-
         if (s.empty())
         {
-
             s.push(val);
             mini = min(val, mini);
             minwli.push(mini);
@@ -28,7 +26,6 @@ public:
 
         else
         {
-
             s.push(val);
             mini = min(val, minwli.top());
             minwli.push(mini);
@@ -37,26 +34,22 @@ public:
 
     void pop()
     {
-
         s.pop();
         minwli.pop();
 
         if (s.empty())
         {
-
             mini = INT32_MAX;
         }
     }
 
     int top()
     {
-
         return s.top();
     }
 
     int getMin()
     {
-
         return minwli.top();
     }
 };
@@ -64,34 +57,28 @@ public:
 
 class SpecialStack
 {
-
     stack<int> s;
     int mini = INT32_MAX;
 
 public:
     void push(int data)
     {
-
         if (s.empty())
         {
-
             s.push(data);
             mini = data;
         }
 
         else
         {
-
             if (data < mini)
             {
-
                 s.push(2 * data - mini);
                 mini = data;
             }
 
             else
             {
-
                 s.push(data);
             }
         }
@@ -99,10 +86,8 @@ public:
 
     int pop()
     {
-
         if (s.empty())
         {
-
             return -1;
         }
 
@@ -111,13 +96,11 @@ public:
 
         if (curr > mini)
         {
-
             return curr;
         }
 
         else
         {
-
             int prevMin = mini;
             int val = 2 * mini - curr;
             mini = val;
@@ -127,10 +110,8 @@ public:
 
     int top()
     {
-
         if (s.empty())
         {
-
             return -1;
         }
 
@@ -138,29 +119,24 @@ public:
 
         if (curr < mini)
         {
-
             return mini;
         }
 
         else
         {
-
             return curr;
         }
     }
 
     bool isEmpty()
     {
-
         return s.empty();
     }
 
     int getMin()
     {
-
         if (s.empty())
         {
-
             return -1;
         }
 
