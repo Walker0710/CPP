@@ -24,7 +24,7 @@ pair<int, int> diameterFast(TreeNode* root) {
     pair<int, int> right = diameterFast(root -> right);
 
     int leftA = left.first;
-    int rightA = left.second;
+    int rightA = right.first;
     int combo = left.second + right.second + 1;
 
     pair<int, int> ans; 
