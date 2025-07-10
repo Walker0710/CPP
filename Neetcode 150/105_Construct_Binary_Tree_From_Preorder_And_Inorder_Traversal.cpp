@@ -28,7 +28,6 @@ TreeNode *solve(vector<int> in, vector<int> pre, int &index, int inorderStart, i
     // base case
     if (index == n || inorderStart > inorderEnd)
     {
-
         return NULL;
     }
 
@@ -53,8 +52,7 @@ TreeNode *buildTree(vector<int> &pre, vector<int> &in)
 
 
 // approch 2
-TreeNode *build(vector<int> &preorder, vector<int> &inorder, int preS, int preE,
-                int inS, int inE, unordered_map<int, int> &mpp)
+TreeNode *build(vector<int> &preorder, vector<int> &inorder, int preS, int preE, int inS, int inE, unordered_map<int, int> &mpp)
 {
     if (preS > preE || inS > inE)
         return NULL;

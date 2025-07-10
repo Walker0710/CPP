@@ -33,6 +33,7 @@ int findCheapestPrice(int n, vector<vector<int>> &flights, int src, int dst, int
             q.pop();
             int node = temp.first;
             int distance = temp.second;
+            
             for (auto neigh : adj[node])
             {
                 if (dist[neigh.first] > distance + neigh.second)
@@ -43,7 +44,9 @@ int findCheapestPrice(int n, vector<vector<int>> &flights, int src, int dst, int
             }
         }
     }
+
     if (dist[dst] == INT_MAX)
-        return -1;
+    return -1;
+    
     return dist[dst];
 }

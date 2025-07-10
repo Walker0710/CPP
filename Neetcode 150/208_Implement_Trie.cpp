@@ -80,7 +80,6 @@ public:
         return siri(root, word);
     }
 
-
     bool pre(trieNode *root, string word)
     {
         if (word.length() == 0)

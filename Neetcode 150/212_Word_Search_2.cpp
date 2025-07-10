@@ -46,43 +46,8 @@ vector<string> findWords(vector<vector<char>> &board, vector<string> &words)
     return res;
 }
 
-class TrieNode
-{
-public:
-    TrieNode *children[26];
-    int idx;
-    int refs;
-
-    TrieNode()
-    {
-        for (int i = 0; i < 26; ++i)
-        {
-            children[i] = nullptr;
-        }
-        idx = -1;
-        refs = 0;
-    }
-
-    void addWord(const string &word, int i)
-    {
-        TrieNode *cur = this;
-        cur->refs++;
-        for (char c : word)
-        {
-            int index = c - 'a';
-            if (!cur->children[index])
-            {
-                cur->children[index] = new TrieNode();
-            }
-            cur = cur->children[index];
-            cur->refs++;
-        }
-        cur->idx = i;
-    }
-};
 
 // 2nd approch
-
 class TrieNode
 {
 public:

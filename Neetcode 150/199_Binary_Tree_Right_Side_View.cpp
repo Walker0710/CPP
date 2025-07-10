@@ -14,16 +14,18 @@ struct TreeNode
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-void solve(TreeNode *root, vector<int> &ans, int lvl) {
-    if(root == NULL)
-    return ;
+void solve(TreeNode *root, vector<int> &ans, int lvl)
+{
+    if (root == NULL)
+        return;
 
-    if(lvl == ans.size()) {
-        ans.push_back(root -> val);
+    if (lvl == ans.size())
+    {
+        ans.push_back(root->val);
     }
 
-    solve(root -> right, ans, lvl + 1);
-    solve(root -> left, ans, lvl+1);
+    solve(root->right, ans, lvl + 1);
+    solve(root->left, ans, lvl + 1);
 }
 
 vector<int> rightSideView(TreeNode *root)
