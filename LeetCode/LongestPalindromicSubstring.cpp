@@ -66,7 +66,7 @@ bool pali(string &s, int st, int en)
     while (en >= st)
     {
         if (s[en] != s[st])
-            return false;
+        return false;
 
         en--;
         st++;
@@ -91,7 +91,6 @@ pair<int, int> solveMem(string &s, int st, int en, vector<vector<pair<int, int>>
 
     else
     {
-
         pair<int, int> one = solveMem(s, st + 1, en, dp);
         pair<int, int> two = solveMem(s, st, en - 1, dp);
 

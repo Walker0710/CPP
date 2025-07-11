@@ -61,7 +61,6 @@ int solveMem(vector<int> &coins, int amount, vector<int> &dp)
 
 int coinChange(vector<int> &coins, int amount)
 {
-
     vector<int> dp(amount + 1, -1);
     int ans = solveMem(coins, amount, dp);
 

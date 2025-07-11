@@ -20,7 +20,6 @@ struct pair_hash
 
 bool isPali(string s, int st, int en)
 {
-
     while (st <= en)
     {
         if (s[st] != s[en])
