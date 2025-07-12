@@ -21,7 +21,6 @@ int maxSubArray(vector<int> &nums)
 }
 
 
-
 int maxProduct(vector<int> &nums)
 {
     int n = nums.size();
