@@ -36,3 +36,29 @@ long long numberOfPairs(vector<int> &nums1, vector<int> &nums2, int k)
     }
     return result;
 }
+
+
+vector<int> getPrimeFactors(int x)
+{
+    vector<int> primeFactors;
+
+    for (int i = 2; i * i <= x; i++)
+    {
+        if (x % i == 0)
+        {
+            primeFactors.push_back(i);
+
+            while (x % i == 0)
+            {
+                x /= i;
+            }
+        }
+    }
+
+    if (x != 1)
+    {
+        primeFactors.push_back(x);
+    }
+
+    return primeFactors;
+}

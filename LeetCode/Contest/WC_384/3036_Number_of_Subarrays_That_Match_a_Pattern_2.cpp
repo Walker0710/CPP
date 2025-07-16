@@ -1,7 +1,10 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
-void computeLPSArray(string& pat, int M, vector<int>& lps)
+// << ,
+
+void computeLPSArray(vector<int> &pat, int M, vector<int> &lps)
 {
     // Length of the previous longest prefix suffix
     int len = 0;
@@ -11,15 +14,18 @@ void computeLPSArray(string& pat, int M, vector<int>& lps)
 
     // loop calculates lps[i] for i = 1 to M-1
     int i = 1;
-    while (i < M) {
-        if (pat[i] == pat[len]) {
+    while (i < M)
+    {
+        if (pat[i] == pat[len])
+        {
             len++;
             lps[i] = len;
             i++;
         }
         else // (pat[i] != pat[len])
         {
-            if (len != 0) {
+            if (len != 0)
+            {
                 len = lps[len - 1];
             }
             else // if (len == 0)
@@ -32,10 +38,10 @@ void computeLPSArray(string& pat, int M, vector<int>& lps)
 }
 
 // Prints occurrences of pat in txt
-vector<int> KMPSearch(string& pat, string& txt)
+vector<int> KMPSearch(vector<int> &pat, vector<int> &txt)
 {
-    int M = pat.length();
-    int N = txt.length();
+    int M = pat.size();
+    int N = txt.size();
 
     // Create lps[] that will hold the longest prefix suffix
     // values for pattern
@@ -48,19 +54,23 @@ vector<int> KMPSearch(string& pat, string& txt)
 
     int i = 0; // index for txt
     int j = 0; // index for pat
-    while ((N - i) >= (M - j)) {
-        if (pat[j] == txt[i]) {
+    while ((N - i) >= (M - j))
+    {
+        if (pat[j] == txt[i])
+        {
             j++;
             i++;
         }
 
-        if (j == M) {
+        if (j == M)
+        {
             result.push_back(i - j + 1);
             j = lps[j - 1];
         }
 
         // Mismatch after j matches
-        else if (i < N && pat[j] != txt[i]) {
+        else if (i < N && pat[j] != txt[i])
+        {
 
             // Do not match lps[0..lps[j-1]] characters,
             // they will match anyway
@@ -72,25 +82,6 @@ vector<int> KMPSearch(string& pat, string& txt)
     }
     return result;
 }
-
-int main()
-{
-    string txt = "geeksforgeeks";
-    string pat = "geeks";
-    vector<int> result = KMPSearch(pat, txt);
-
-    // Print all the occurance (1-based indices)
-    for (int i = 0; i < result.size(); i++) {
-        cout << result[i] << " ";
-    }
-    return 0;
-}
-
-
-
-
-
-
 
 int countMatchingSubarrays(vector<int> &nums, vector<int> &pattern)
 {
@@ -119,43 +110,4 @@ int countMatchingSubarrays(vector<int> &nums, vector<int> &pattern)
     vector<int> yoo = KMPSearch(pattern, nums2);
 
     return yoo.size();
-}
-
-
-
-
-
-
-int longestPrefixSuffix(string &s)
-{
-    int i = 1;
-    int j = 0;
-    int n = s.length();
-
-    vector<int> lps(n, 0);
-
-    while (i < n)
-    {
-        if (s[i] == s[j])
-        {
-            j++;
-            lps[i] = j;
-            i++;
-        }
-
-        else
-        {
-            if (j != 0)
-            {
-                j = lps[j - 1];
-            }
-
-            else
-            {
-                i++;
-            }
-        }
-    }
-
-    return lps[n - 1];
 }
