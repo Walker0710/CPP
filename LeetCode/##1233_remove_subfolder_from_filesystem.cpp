@@ -50,11 +50,12 @@ public:
 
         int index = 0;
 
-        if(word[0] == '/') 
-        index = 26;
+        if (word[0] == '/')
+            index = 26;
 
-        else {
-        index = word[0] - 'a';
+        else
+        {
+            index = word[0] - 'a';
         }
 
         TrieNode *child;
@@ -96,7 +97,8 @@ public:
         }
     }
 
-    vector<string> dfs() {
+    vector<string> dfs()
+    {
         vector<string> ans;
         dfsSolve(root, "", ans);
         return ans;
@@ -113,75 +115,104 @@ vector<string> removeSubfolders(vector<string> &folder)
         root->insert(i);
     }
 
-    vector<string> ans = root -> dfs();
+    vector<string> ans = root->dfs();
     return ans;
 }
 
-//2nd 
-struct Node{
-    Node* links[27];
-    int ew=0;
+// 2nd
+struct Node
+{
+    Node *links[27];
+    int ew = 0;
 };
-class Trie{
-    public:
-    Node* root;
-    Trie(){
-        root=new Node();
+class Trie
+{
+public:
+    Node *root;
+    Trie()
+    {
+        root = new Node();
     }
-    void insert(string &s){
-        int n=s.size();
-        Node* temp=root;
-        for(int i=0; i<n; i++){
-            if(s[i]=='/'){
-               if(temp->links[26]==NULL){
-                   Node* newnode=new Node();
-                   temp->links[26]=newnode;
-               }
-               temp=temp->links[26];
-            }else{
-              if(temp->links[s[i]-'a']==NULL){
-                  Node* newnode=new Node();
-                  temp->links[s[i]-'a']=newnode;
-              }
-              temp=temp->links[s[i]-'a'];
+    void insert(string &s)
+    {
+        int n = s.size();
+        Node *temp = root;
+        for (int i = 0; i < n; i++)
+        {
+            if (s[i] == '/')
+            {
+                if (temp->links[26] == NULL)
+                {
+                    Node *newnode = new Node();
+                    temp->links[26] = newnode;
+                }
+                temp = temp->links[26];
+            }
+            else
+            {
+                if (temp->links[s[i] - 'a'] == NULL)
+                {
+                    Node *newnode = new Node();
+                    temp->links[s[i] - 'a'] = newnode;
+                }
+                temp = temp->links[s[i] - 'a'];
             }
         }
         temp->ew++;
-    }  
-    bool check(string &s){
-        Node* temp=root;
-        int n=s.size();
-        for(int i=0; i<n; i++){
-            if(s[i]=='/'){
-     
-                if(temp->ew>0){
+    }
+
+    bool check(string &s)
+    {
+        Node *temp = root;
+        int n = s.size();
+    
+        for (int i = 0; i < n; i++)
+        {
+            if (s[i] == '/')
+            {
+
+                if (temp->ew > 0)
+                {
                     return true;
                 }
-                temp=temp->links[26];
-               
-            }else{
-                if(temp->links[s[i]-'a']==NULL){
+                temp = temp->links[26];
+            }
+    
+            else
+            {
+                if (temp->links[s[i] - 'a'] == NULL)
+                {
                     return false;
                 }
-                temp=temp->links[s[i]-'a'];
+                temp = temp->links[s[i] - 'a'];
             }
         }
+    
         return false;
     }
 };
-class Solution {
+
+
+class Solution
+{
 public:
-    vector<string> removeSubfolders(vector<string>& folder) {
+    vector<string> removeSubfolders(vector<string> &folder)
+    {
         Trie T;
 
-        for(int i=0; i<folder.size(); i++){
+        for (int i = 0; i < folder.size(); i++)
+        {
             T.insert(folder[i]);
         }
         vector<string> ans;
-        for(int i=0; i<folder.size(); i++){
-            if(T.check(folder[i])){
+        for (int i = 0; i < folder.size(); i++)
+        {
+            if (T.check(folder[i]))
+            {
                 continue;
-            }else{
+            }
+            else
+            {
                 ans.push_back(folder[i]);
             }
         }

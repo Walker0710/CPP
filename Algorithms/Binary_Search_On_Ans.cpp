@@ -4,10 +4,7 @@ using namespace std;
 
 // << ,
 
-
 // hamesha check wle fn me extreme case dekhna like lastindex as stuff
-
-
 int maxPointsInsideSquare(vector<vector<int>> &points, string s)
 {
     int n = points.size();
@@ -25,7 +22,7 @@ int maxPointsInsideSquare(vector<vector<int>> &points, string s)
             if (max(abs(x), abs(y)) <= side)
             {
                 if (tags.count(s[i]))
-                return -1; 
+                return -1;
                 
                 tags.insert(s[i]);
                 count++;
@@ -42,6 +39,7 @@ int maxPointsInsideSquare(vector<vector<int>> &points, string s)
     {
         int mid = (low + high) / 2;
         int count = isValid(mid);
+
         if (count >= 0)
         {
             ans = count;

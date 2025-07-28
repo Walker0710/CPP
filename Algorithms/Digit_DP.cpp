@@ -105,3 +105,57 @@ ll numberOfPowerfulInt(ll start, ll finish, int limit, string s)
 
     return upperCount - lowerCount;
 }
+
+
+
+
+
+
+
+
+
+class Solution {
+public:
+
+int dp[10][2][20][10][10][2];
+    string num;
+    int k;
+
+    int solve(int pos, bool tight,int modk, int odd, int even, bool Lzero){
+        
+        if(pos == num.size()){
+            return (modk == 0 and (odd == even) and (Lzero == false));
+        }
+    
+        if( dp[pos][tight][modk][odd][even][Lzero] != -1) 
+        return dp[pos][tight][modk][odd][even][Lzero];
+    
+        int limit = tight ? num[pos] -'0' : 9;
+        int ans = 0;
+        
+        for(int i = 0; i <= limit ; i++){
+            int newtight = tight && (i==limit);
+            bool newLzero = Lzero && (i == 0);
+            int newodd = odd + (i%2 == 1);
+            int neweven = even + (!newLzero and i%2 == 0);
+        
+            ans += (solve(pos+1,newtight,(modk*10 + i)%k, newodd, neweven, newLzero));
+        }
+        
+        return dp[pos][tight][modk][odd][even][Lzero] =  ans;
+    }
+
+    int numberOfBeautifulIntegers(int low, int high, int k) {
+        memset(dp,-1,sizeof(dp));
+        this->k = k;
+    
+        num = to_string(low-1);
+        auto ans1 = solve(0,true,0,0,0,true);
+    
+        memset(dp,-1,sizeof(dp));
+        num = to_string(high);
+    
+        auto ans2 = solve(0,true,0,0,0,true);
+        return ans2- ans1;
+    }
+};
