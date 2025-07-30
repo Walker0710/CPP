@@ -18,6 +18,7 @@ int solve(vector<int> &nums, int i, int j, vector<vector<int>> &dp)
     return dp[i][j] = max(first, last);
 }
 
+
 bool predictTheWinner(vector<int> &nums)
 {
     int n = nums.size();

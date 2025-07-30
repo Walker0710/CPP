@@ -13,6 +13,7 @@ string rec(int i, int j, string &str1, string &str2)
     {
         return str2.substr(j);
     }
+    
     if (j == str2.length())
     {
         return str1.substr(i);

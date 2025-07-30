@@ -21,6 +21,7 @@ vector<vector<int>> insert(vector<vector<int>> &intervals, vector<int> &newInter
         newInterval[1] = max(newInterval[1], intervals[i][1]);
         i++;
     }
+
     res.push_back(newInterval);
 
     while (i < n)
@@ -28,6 +29,7 @@ vector<vector<int>> insert(vector<vector<int>> &intervals, vector<int> &newInter
         res.push_back(intervals[i]);
         i++;
     }
+    
     return res;
 }
 
