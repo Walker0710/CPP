@@ -125,6 +125,7 @@ public:
             size[pu] += size[pv];
             parent[pv] = pu;
         }
+        
         else
         {
             edges[pv] += edges[pu] + 1;

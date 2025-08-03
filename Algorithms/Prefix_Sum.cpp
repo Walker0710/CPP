@@ -24,7 +24,6 @@ long long maximumSubarraySum(std::vector<int> &nums, int k)
 
     for (int i = 1; i < n; i++)
     {
-
         long long target1 = nums[i] + k;
         long long target2 = nums[i] - k;
 

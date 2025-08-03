@@ -11,7 +11,6 @@ using namespace std;
 
 vector<int> dijkstra(vector<vector<int>> &vec, int vertices, int edges, int source)
 {
-
     // adj list
     unordered_map<int, list<pair<int, int>>> adj;
 

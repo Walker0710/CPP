@@ -11,12 +11,15 @@ void computeLPSArray(string& pat, int M, vector<int>& lps)
 
     // loop calculates lps[i] for i = 1 to M-1
     int i = 1;
+
     while (i < M) {
+
         if (pat[i] == pat[len]) {
             len++;
             lps[i] = len;
             i++;
         }
+        
         else // (pat[i] != pat[len])
         {
             if (len != 0) {
