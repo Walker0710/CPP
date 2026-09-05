@@ -19,12 +19,13 @@ void computeLPSArray(string& pat, int M, vector<int>& lps)
             lps[i] = len;
             i++;
         }
-        
+
         else // (pat[i] != pat[len])
         {
             if (len != 0) {
                 len = lps[len - 1];
             }
+
             else // if (len == 0)
             {
                 lps[i] = 0;
@@ -51,6 +52,7 @@ vector<int> KMPSearch(string& pat, string& txt)
 
     int i = 0; // index for txt
     int j = 0; // index for pat
+    
     while ((N - i) >= (M - j)) {
         if (pat[j] == txt[i]) {
             j++;
